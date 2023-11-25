@@ -16,7 +16,7 @@ export const rotaPush: RequestHandler = async (req, res) => {
   stack.push(nome, isDoador);
 
   try {
-    const stackContents = stack.getStack().map((paciente) => JSON.stringify(paciente));
+    const stackContents = stack.getStack();
     await arquivo.escreverArquivo(stackContents);
     return res.status(200).json({ stackContents });
   } catch (error) {
@@ -32,7 +32,7 @@ export const rotaPop: RequestHandler = async (_req, res) => {
   const removedFromStack = stack.pop();
 
   try {
-    const stackContents = stack.getStack().map((paciente) => JSON.stringify(paciente));
+    const stackContents = stack.getStack();
     await arquivo.escreverArquivo(stackContents); 
 
     return res.status(200).json({ removedFromStack });

@@ -13,7 +13,7 @@ class Arquivo {
     }
   }
 
-  async escreverArquivo(nomes: string[]): Promise<void | never> {
+  async escreverArquivo(nomes: unknown[]): Promise<void | never> {
     try {
       await fs.writeFile(dataPath, nomes.join('\n'));
     } catch (error) {
